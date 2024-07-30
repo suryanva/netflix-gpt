@@ -1,10 +1,24 @@
-import { useState } from "react";
-
+import { useRef, useState } from "react";
+import { checkValidData } from "../utils/validate";
 const Form = () => {
   const [signUp, setSignUp] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleButtonClick = () => {
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+
+    const errorMessage = checkValidData(emailValue, passwordValue);
+
+    setErrorMessage(errorMessage);
+  };
 
   const toggleSignUp = () => {
     setSignUp(!signUp);
+    setErrorMessage(null);
   };
 
   return (
@@ -13,7 +27,10 @@ const Form = () => {
         <h1 className="font-bold text-3xl mt-5">
           {signUp ? "Sign Up" : "Sign In"}
         </h1>
-        <form className="space-y-6 text-center ">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="space-y-6 text-center "
+        >
           {signUp && (
             <input
               className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
@@ -22,18 +39,24 @@ const Form = () => {
             />
           )}
           <input
+            ref={email}
             className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
             type="text"
-            placeholder="Email or Mobile Number"
+            placeholder="Email"
           />
           <input
+            ref={password}
             className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg"
             type="password"
             placeholder="Password"
           />
-          <button className="block w-full p-2 bg-[#E50914]  hover:bg-opacity-60 ">
+          <button
+            onClick={() => handleButtonClick()}
+            className="block w-full p-2 bg-[#E50914]  hover:bg-opacity-60 "
+          >
             {signUp ? "Sign Up" : "Sign In"}
           </button>
+          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
           {!signUp && <h3 className="text-center">OR</h3>}
 
           {!signUp && (
