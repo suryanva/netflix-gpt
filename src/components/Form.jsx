@@ -27,21 +27,28 @@ const Form = () => {
           <button className="block w-full p-2 bg-[#E50914] relative z-10 ">
             {signUp ? "Sign Up" : "Sign In"}
           </button>
-          <h3 className="text-center">OR</h3>
+          {!signUp && <h3 className="text-center">OR</h3>}
+
           {!signUp && (
             <button className={"block w-full p-2 bg-gray-600"}>
               Use a Sign-In Code
             </button>
           )}
-          <p className="text-center hover:underline ">
-            <a href="#dummy">Forgot Password?</a>
-          </p>
+
+          {!signUp && (
+            <p className="text-center hover:underline ">
+              <a href="#dummy">Forgot Password?</a>
+            </p>
+          )}
         </form>
         <div className="flex items-center">
           <input type="checkbox" id="rememberMe" className="mr-2" />
           <label htmlFor="rememberMe">Remember Me</label>
         </div>
-        <p className="cursor-pointer" onClick={() => toggleSignUp()}>
+        <p
+          className="cursor-pointer hover:underline"
+          onClick={() => toggleSignUp()}
+        >
           {signUp
             ? "Already a User? Sign In Now"
             : "New to Netflix? Sign up now."}
