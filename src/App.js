@@ -1,9 +1,10 @@
 import "./App.css";
+import Body from "./components/Body";
 
 function App() {
   return (
     <div>
-      <h1 className="font-bold text-2xl text-cyan-500">My First React App</h1>
+      <Body />
     </div>
   );
 }
