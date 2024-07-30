@@ -14,13 +14,20 @@ const Form = () => {
           {signUp ? "Sign Up" : "Sign In"}
         </h1>
         <form className="space-y-6 text-center ">
+          {signUp && (
+            <input
+              className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
+              type="text"
+              placeholder="Full Name"
+            />
+          )}
           <input
-            className="p-2 w-full bg-black opacity-70 border border-gray-50 rounded-lg "
+            className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg "
             type="text"
             placeholder="Email or Mobile Number"
           />
           <input
-            className="p-2 w-full bg-black opacity-70 border border-gray-50 rounded-lg"
+            className="p-4 w-full bg-gray-700  border border-gray-50 rounded-lg"
             type="password"
             placeholder="Password"
           />
