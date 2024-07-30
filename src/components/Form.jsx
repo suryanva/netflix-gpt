@@ -31,13 +31,15 @@ const Form = () => {
             type="password"
             placeholder="Password"
           />
-          <button className="block w-full p-2 bg-[#E50914] relative z-10 ">
+          <button className="block w-full p-2 bg-[#E50914]  hover:bg-opacity-60 ">
             {signUp ? "Sign Up" : "Sign In"}
           </button>
           {!signUp && <h3 className="text-center">OR</h3>}
 
           {!signUp && (
-            <button className={"block w-full p-2 bg-gray-600"}>
+            <button
+              className={"block w-full p-2 bg-gray-600 hover:bg-opacity-60"}
+            >
               Use a Sign-In Code
             </button>
           )}
